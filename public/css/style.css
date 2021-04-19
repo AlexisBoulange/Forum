@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+}
+.lineG{
+    width : 80%;
+    border: solid 1px #28A745;
+    margin: 1vh auto;
+}
+.lineB{
+    width : 80%;
+    border: solid 2px #343A40;
+    margin: 2vh auto;
+}
+nav img{
+    height : 30px;
+    width : 40px;
+}
+li{
+    list-style-type: none;
+}
+.btn{
+    margin: 1em 0 1em 1em !important;
+}
+/**************************** MAIN HOME**/
+main{
+    margin: 50px 0;
+    justify-content: space-between;
+}
+main a{
+    color: #343A40;
+}
+main a:hover{
+    color: #28A745;
+}
+.topics{
+    width: 50%;
+    border: solid 2px #343A40;
+}
+h4{
+    text-align: center;
+}
+.topic{
+    margin-left: 20px;
+}
+/**************************** ASIDE HOME**/
+aside{
+    width: 40%;
+    border: solid 2px #343A40;
+}
+/************************** LISTES*/
+
+
+.lists{
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background-color: #343A40;
+    color: #28A745;
+    position: relative;
+}
+.topic{
+    color: #28A745;
+    font-size: 35px;
+}
+.date{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    color: whitesmoke;
+}
+.author{
+    position: absolute;
+    right: 10px;
+    bottom: -15px;
+    color: whitesmoke;
+}
+.user{
+    color: #28A745;
+}
