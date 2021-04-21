@@ -22,7 +22,8 @@ li{
     list-style-type: none;
 }
 .btn{
-    margin: 1em 0 1em 1em !important;
+    
+    margin: 2px 1em 2px 0 !important;
 }
 /**************************** MAIN HOME**/
 main{
@@ -42,7 +43,7 @@ main a:hover{
 h4{
     text-align: center;
 }
-.topic{
+.sujet{
     margin-left: 20px;
 }
 /**************************** ASIDE HOME**/
@@ -62,7 +63,8 @@ aside{
 }
 .topic{
     color: #28A745;
-    font-size: 35px;
+    font-size: 30px;
+    margin-left: 20px;
 }
 .date{
     position: absolute;
