@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\Manager\MessageManager;
 
+
 class MessageController {
 
     public function messagesList(){
@@ -18,4 +19,6 @@ class MessageController {
             ]
         ];;
     }
+
+
 }
