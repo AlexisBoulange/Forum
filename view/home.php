@@ -14,21 +14,21 @@
         <section class="topics">
             <h4>Last topics :</h4>
             <div class="lineB"></div>
-            <article class="topic">
+            <article class="sujet">
                 <a href="#">
                     <h5>Topic 1</h5>
                 </a>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque accusantium dignissimos aut omnis modi officia ex perferendis nihil eligendi voluptatibus cumque tempora, a labore magni, tempore quas, ducimus architecto eveniet.</p>
             </article>
             <div class="lineG"></div>
-            <article class="topic">
+            <article class="sujet">
                 <a href="#">
                     <h5>Topic 2</h5>
                 </a>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque accusantium dignissimos aut omnis modi officia ex perferendis nihil eligendi voluptatibus cumque tempora, a labore magni, tempore quas, ducimus architecto eveniet.</p>
             </article>
             <div class="lineG"></div>
-            <article class="topic">
+            <article class="sujet">
                 <a href="#">
                     <h5>Topic 3</h5>
                 </a>
