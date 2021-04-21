@@ -13,7 +13,7 @@
             //connexion à la BDD
             try{
                 $pdo = new \PDO(
-                    'mysql:host='.self::DB_HOST.';dbname='.self::DB_NAME,   // "::" fournit un moyen d'accéder aux membres static ou constant, ainsi qu'aux propriétés ou méthodes surchargées d'une classe.
+                    'mysql:host='.self::DB_HOST.';dbname='.self::DB_NAME.';charset=utf8',   // "::" fournit un moyen d'accéder aux membres static ou constant, ainsi qu'aux propriétés ou méthodes surchargées d'une classe.
                     self::DB_USER,
                     self::DB_PASS,
                     [
