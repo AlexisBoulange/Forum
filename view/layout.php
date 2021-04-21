@@ -50,7 +50,7 @@
             </div>
         </main>
     </div>
-    <footer class="footer mt-auto py-3 bg-dark">
+    <footer class="footer mt-auto py-3 bg-dark fixed-bottom text-center">
         <div class="container">
             <span class="text-muted">&copy;2021 - Alexis BOULANGÉ - DL COLMAR</span>
         </div>
