@@ -36,14 +36,16 @@ class CategoryController {
         $categories = $categoryModel->findOneById($id);
         //J'utilise la méthode findTopicsByCategory() de TopicManager
         $topics = $topicModel->findTopicsByCategory($id);
-
+        $nb = $topicModel->findNbTopicsByCategory($id);
 
         return [
             "view" => "listTopicsByCategory.php",
             "data" => [
                 "categories" => $categories,
                 "topics" => $topics,
+                "nb" => $nb,
             ]
         ];;
     }
+
 }
