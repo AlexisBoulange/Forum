@@ -19,7 +19,10 @@ class CategoryManager extends AbstractManager
 
     public function findAll(){                      //fonction pour trouver toutes les catégories
 
-        $sql = "SELECT * FROM category";            //On SELECT tous les éléments de la table category
+        $sql = "SELECT name, id_category, COUNT(t.id_topic) AS nb
+                 FROM category c LEFT JOIN topic t
+                 ON t.category_id = c.id_category
+                 GROUP BY name, id_category ";            //On SELECT tous les éléments de la table category
 
         return self::getResults(                    //Récupère un tableau d'objets
             self::select($sql, null, true), 
