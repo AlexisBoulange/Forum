@@ -31,23 +31,24 @@ class TopicManager extends AbstractManager
 
     public function findOneById($id){
         $sql = "SELECT *
-                FROM category
-                WHERE category_id = :id";
+                FROM topic
+                WHERE id_topic = :id";
 
         return self::getOneOrNullResult(
             self::select($sql,
                         ["id" =>$id],
-                        true),
+                        false),
         self::$classname
         );
     }
 
     public function findTopicsByCategory($id){
 
-        $sql = "SELECT t.id_topic, t.title, t.creationDate, t.user_id, u.username
+        $sql = "SELECT t.id_topic, t.title, t.creationDate, t.user_id, u.username, COUNT(t.id_topic) AS nbTopics
                 FROM topic t INNER JOIN user u
                 ON t.user_id = u.id_user
                 WHERE t.category_id = :id
+                GROUP BY t.id_topic
                 ORDER BY t.creationDate DESC";
 
         return self::getResults(
@@ -56,5 +57,20 @@ class TopicManager extends AbstractManager
             true),
             self::$classname
         );
+    }
+
+    public function findNbTopicsByCategory($id){
+
+        $sql="SELECT c.name, COUNT(t.id_topic) AS nb
+            FROM category c INNER JOIN topic t
+            ON t.category_id = c.id_category
+            WHERE t.category_id = :id";
+
+        return self::getResults(
+            self::select($sql,
+            ["id" => $id],
+            false),
+            self::$classname
+);
     }
 }
