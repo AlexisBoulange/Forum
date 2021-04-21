@@ -15,10 +15,6 @@ class UserManager extends AbstractManager
     }
     
 
-
-
-
-
     public function findAll(){                      //fonction pour trouver toutes les catégories
 
         $sql = "SELECT * FROM user";                //On SELECT tout les éléments de la table category
