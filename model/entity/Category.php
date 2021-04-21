@@ -10,6 +10,7 @@ class Category extends AbstractEntity
 
         private $id;
         private $name;
+        private $nb = null;
 
         public function __construct($data)
         {
@@ -53,6 +54,27 @@ class Category extends AbstractEntity
         public function setName($name)
         {
                 $this->name = $name;
+
+                return $this;
+        }
+
+
+        /**
+         * Get the value of nb
+         */ 
+        public function getNb()
+        {
+                return $this->nb;
+        }
+
+        /**
+         * Set the value of nb
+         *
+         * @return  self
+         */ 
+        public function setNb($nb)
+        {
+                $this->nb = $nb;
 
                 return $this;
         }
