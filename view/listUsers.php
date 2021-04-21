@@ -1,4 +1,4 @@
-<h1>Liste des utilisateurs</h1>
+<h1>Il y a <?= count($data['users']);?> utilisateurs </h1>
 
 <ul>
 <?php
