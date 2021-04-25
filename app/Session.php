@@ -33,6 +33,10 @@
             return;
         }
 
+        public function isAdmin(){
+            
+        }
+
         public static function authenticationRequired($roleToHave){
             if(!self::getUser()){
                 Router::redirectTo("security", "login");
