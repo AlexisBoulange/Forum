@@ -20,8 +20,8 @@ class CategoryManager extends AbstractManager
     public function findAll(){                      //fonction pour trouver toutes les catégories
 
         $sql = "SELECT name, id_category, COUNT(t.id_topic) AS nb
-                 FROM category c LEFT JOIN topic t
-                 ON t.category_id = c.id_category
+                FROM category c LEFT JOIN topic t
+                ON t.category_id = c.id_category
                  GROUP BY name, id_category ";            //On SELECT tous les éléments de la table category
 
         return self::getResults(                    //Récupère un tableau d'objets
@@ -41,5 +41,28 @@ class CategoryManager extends AbstractManager
                         false),
             self::$classname
         );
+    }
+
+    public function findOneByName($category){
+        $sql = "SELECT name
+                FROM category c
+                WHERE name = :category";
+
+        return self::getOneOrNullResult(
+            self::select($sql,
+                        ["category" =>$category],
+                        false),
+            self::$classname
+        );
+    }
+
+    public function addCategory($category){
+        $sql = "INSERT INTO category(name)
+                VALUES (:category)";
+
+        return self::create($sql,
+                        ["category" =>$category]);
+            self::$classname;
+        
     }
 }
