@@ -19,6 +19,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    
+                    <?php
+                        if(App\Session::getUser()){
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="?ctrl=category&method=categorieslist"> CATEGORIES </a>
                     </li>
@@ -26,14 +30,22 @@
                         <a class="nav-link" href="?ctrl=topic&method=topicslist"> TOPICS </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?ctrl=message&method=messageslist"> MESSAGES </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="?ctrl=user&method=userslist"> USERS </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?ctrl=user&method"> LOGIN </a>
+                        <a class="nav-link" href="?ctrl=security&method=logout"> LOGOUT </a>
                     </li>
+                    <?php
+                        }else{
+                            ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?ctrl=security&method=login"> LOGIN </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?ctrl=security&method=register"> REGISTER </a>
+                            </li>
+                    <?php
+                }?>
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
