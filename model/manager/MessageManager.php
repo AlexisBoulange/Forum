@@ -16,9 +16,9 @@ class MessageManager extends AbstractManager
     
 
 
-    public function findAll(){                      //fonction pour trouver toutes les catégories
+    public function findAll(){                      
 
-        $sql = "SELECT * FROM message";             //On SELECT tout les éléments de la table category
+        $sql = "SELECT * FROM message";             
 
         return self::getResults(
             self::select($sql, null, false), 
@@ -41,7 +41,7 @@ class MessageManager extends AbstractManager
 
     public function findMessagesByTopic($id){
 
-        $sql = "SELECT m.id_message, m.text, m.creationDate, m.topic_id, t.title
+        $sql = "SELECT m.id_message, m.text, m.creationDate, m.topic_id, t.title, m.user_id
                 FROM message m INNER JOIN topic t
                 ON m.topic_id = t.id_topic
                 WHERE t.id_topic = :id
@@ -53,5 +53,17 @@ class MessageManager extends AbstractManager
             true),
             self::$classname
         );
+    }
+
+    public function addMessage($message, $userId, $topicId){
+        $sql = "INSERT INTO message(text, user_id, topic_id)
+                VALUES (:text, :user_id, :topic_id)";
+
+        return self::create($sql,
+                        ["text" =>$message,
+                        "user_id"=>$userId,
+                        "topic_id"=>$topicId]);
+            self::$classname;
+        
     }
 }
