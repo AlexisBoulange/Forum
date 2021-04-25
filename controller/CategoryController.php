@@ -14,10 +14,8 @@ class CategoryController {
 
         $categories = $categoryModel->findAll();
 
-
-
         return [
-            "view" => "listCategories.php",
+            "view" => "category/listCategories.php",
             "data" => [
                 "categories" => $categories,
             ]
@@ -36,16 +34,58 @@ class CategoryController {
         $categories = $categoryModel->findOneById($id);
         //J'utilise la méthode findTopicsByCategory() de TopicManager
         $topics = $topicModel->findTopicsByCategory($id);
-        $nb = $topicModel->findNbTopicsByCategory($id);
+        
 
         return [
-            "view" => "listTopicsByCategory.php",
+            "view" => "category/listTopicsByCategory.php",
             "data" => [
                 "categories" => $categories,
                 "topics" => $topics,
-                "nb" => $nb,
+                
             ]
         ];;
     }
+
+    public function createCategory(){
+
+        //on vérifie si la donnée entrée est vide
+        if(!empty($_POST['categorie'])){
+
+            //on applique un filter input pour se prémunir des failles XCSS
+            $category = filter_input(INPUT_POST, "categorie", FILTER_SANITIZE_STRING);
+
+            $model = new CategoryManager(); 
+
+            //on vérifie que le nom de la catégorie n'existe pas, puis on l'ajoute avant redirigé vers la liste
+            if(!$model->findOneByName($category)){
+                $model->addCategory($category);
+
+                header("Location: ?ctrl=category&method=categoriesList");
+            }else {
+                //sinon on met un message d'erreur
+                var_dump("La catégorie existe déjà");
+            }
+        }
+
+        return [
+            "view" => "category/createCategory.php",
+            "data" => null
+        ];
+    }
+
+    public function categoriesListForm(){
+
+        $categoryModel = new CategoryManager;
+
+        $categories = $categoryModel->findAll();
+
+        return [
+            "view" => "topic/createTopic.php",
+            "data" => [
+                "categories" => $categories,
+            ]
+        ];;
+    }
+
 
 }
