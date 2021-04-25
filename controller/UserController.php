@@ -6,15 +6,6 @@ use Model\Manager\UserManager;
 
 class UserController {
 
-    public function login(){
-
-        //traitement à faire
-
-        return [
-            "view" => "login.php",
-            "data" => null
-        ];
-    }
 
     public function usersList(){
 
@@ -22,7 +13,7 @@ class UserController {
         $users = $userModel->findAll();
 
         return [
-            "view" => "listUsers.php",
+            "view" => "user/listUsers.php",
             "data" => [
                 "users" => $users,
             ]
