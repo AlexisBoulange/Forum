@@ -7,12 +7,12 @@
 .lineG{
     width : 80%;
     border: solid 1px #28A745;
-    margin: 1vh auto;
+    margin: 1em auto;
 }
 .lineB{
     width : 80%;
     border: solid 2px #343A40;
-    margin: 2vh auto;
+    margin: 2em auto;
 }
 nav img{
     height : 30px;
@@ -80,4 +80,15 @@ aside{
 }
 .user{
     color: #28A745;
+}
+
+/*********************** MESSAGES*/
+.messages{
+    min-height: 20vh;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #343A40;
+    color: whitesmoke;
+    position: relative;
 }
