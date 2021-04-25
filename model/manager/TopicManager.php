@@ -3,6 +3,7 @@
 namespace Model\Manager;
 
 use App\AbstractManager;
+use App\DAO;
 
 class TopicManager extends AbstractManager
 {
@@ -44,7 +45,7 @@ class TopicManager extends AbstractManager
 
     public function findTopicsByCategory($id){
 
-        $sql = "SELECT t.id_topic, t.title, t.creationDate, t.user_id, u.username, COUNT(t.id_topic) AS nbTopics
+        $sql = "SELECT t.id_topic, t.title, t.creationDate, t.user_id, u.username, COUNT(t.id_topic) AS nbTopics, t.category_id
                 FROM topic t INNER JOIN user u
                 ON t.user_id = u.id_user
                 WHERE t.category_id = :id
@@ -59,18 +60,42 @@ class TopicManager extends AbstractManager
         );
     }
 
-    public function findNbTopicsByCategory($id){
+    public function findOneByName($title){
+        $sql = "SELECT title
+                FROM topic t
+                WHERE title = :title";
 
-        $sql="SELECT c.name, COUNT(t.id_topic) AS nb
-            FROM category c INNER JOIN topic t
-            ON t.category_id = c.id_category
-            WHERE t.category_id = :id";
-
-        return self::getResults(
+        return self::getOneOrNullResult(
             self::select($sql,
-            ["id" => $id],
-            false),
+                        ["title" =>$title],
+                        false),
             self::$classname
-);
+        );
+    }
+
+    public function addTopic($title, $categoryId, $userId, $text){
+
+        $sql = "INSERT INTO topic(title, category_id, user_id)
+                VALUES (:title, :categoryId, :userId)";
+
+
+        return self::create($sql,
+                        [":title" =>$title,
+                        ":categoryId"=>$categoryId,
+                        ":userId"=>$userId,
+                        ]);
+            self::$classname;
+            $db = new DAO;
+            $lastId = $db->getPdo()->lastInsertId();
+
+            $sql2 = "INSERT INTO message(text, user_id, topic_id)
+            VALUES (:text, :userId, :topicId)";
+
+
+            return self::create($sql2,
+                            ["text" =>$text,
+                            "userId"=>$userId,
+                            "topicId"=>$lastId]);
+                self::$classname;
     }
 }
