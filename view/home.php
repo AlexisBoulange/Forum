@@ -37,11 +37,13 @@
         <aside class="categories">
             <h4>Categories :</h4>
             <ul>
-            <?php
+            <?php 
             foreach($data['categories'] as $category){
                 ?>
-                <li><?php $name = $category->getName();
-                    $id = $category->getId();?>
+                <li><?php 
+                    $name = $category->getName();
+                    $id = $category->getId();
+                    ?>
                 <a href="?ctrl=category&method=listTopicsByCategory&id=<?=$id?>"><?= $name ?></a>
                 </li>
             <?php
