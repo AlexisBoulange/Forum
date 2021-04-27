@@ -1,4 +1,7 @@
-<form action="?ctrl=message&method=replyMessage" method="post">
+<?php?>
+
+
+<form action="?ctrl=message&method=replyMessage&id=<?= $data['id']?>" method="post">
 
     <div class="form-group">
         <label for="text">Example textarea</label>
