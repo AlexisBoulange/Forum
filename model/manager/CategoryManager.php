@@ -65,4 +65,21 @@ class CategoryManager extends AbstractManager
             self::$classname;
         
     }
+
+    public function deleteOneById($id){
+
+
+        $sql = "DELETE FROM topic
+                WHERE category_id = :id";
+
+        self::delete($sql,
+                    ["id"=>$id]);
+
+        $sql2 = "DELETE FROM category
+                WHERE id_category = :id";
+
+        return self::delete($sql2,
+                    ["id"=>$id]);
+        
+}
 }
