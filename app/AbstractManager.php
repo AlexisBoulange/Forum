@@ -8,6 +8,10 @@
         protected static function connect(){                //Fonction pour se co à la BDD
             self::$connection = DAO::getConnection();
         }
+        protected static function getLastId(){
+
+            return self::$connection->lastInsertId();
+        }
 
         protected static function getOneOrNullResult($row, $class){
             
@@ -64,4 +68,13 @@
             
             return $stmt->execute($params);
         }
+
+        /**
+         * Get the value of connection
+         */ 
+        public function getConnection()
+        {
+                return $this->connection;
+        }
+
     }
