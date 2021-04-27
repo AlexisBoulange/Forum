@@ -18,7 +18,7 @@
             </select>
     </div>
     <div class="form-group">
-        <label for="text">Example textarea</label>
+        <label for="text">Message</label>
         <textarea class="form-control" name="text" id="text" rows="3"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Valider</button>
