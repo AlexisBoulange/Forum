@@ -11,7 +11,7 @@ $category = $data['categories'];
 <?php
 foreach($data['topics'] as $topic){
     ?>
-    <article class="lists">
+    <article class="lists d-flex p-2">
         <a class="topic" href="?ctrl=topic&method=listMessagesByTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>
         <p class="date"><?= $topic->getCreationDate() ?></p>
         <p class="author">Créé par : <a class="user" href="?ctrl=topic&method=infoUser&id=<?= $topic->getUser()->getId() ?>"><?= $topic->getUser()->getUsername() ?></a></p>
