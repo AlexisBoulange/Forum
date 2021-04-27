@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use App\AbstractManager;
 use Model\Manager\TopicManager;
 use Model\Manager\MessageManager;
 use Model\Manager\CategoryManager;
@@ -64,10 +65,12 @@ class TopicController
                 $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_STRING);
 
                 $topicModel = new TopicManager;
-        
+                $messageModel = new MessageManager;
+                
 
                 if (!$topicModel->findOneByName($topic)) {
-                    $topicModel->addTopic($topic, $categoryId, $userId, $text);
+                    $topicAdd = $topicModel->addTopic($topic, $categoryId, $userId);
+                    $messageModel->addMessage($text, $userId, $topicAdd['id_topic']);
 
                     header("Location: ?ctrl=topic&method=topicsList");
                 } else {
@@ -94,4 +97,20 @@ class TopicController
             ]
         ];;
     }
+
+    public function deleteTopic(){
+
+        $id = (isset($_GET['id'])) ? $_GET['id'] : null; // On récupère l'id 
+        $topicModel = new TopicManager;
+        
+        $topicModel->deleteOneById($id);
+
+        return [
+            "view" => "topic/deleteTopic.php",
+            "data" => [
+                null,
+            ]
+        ];;
+    }
+
 }
