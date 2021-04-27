@@ -29,11 +29,4 @@
             }
         }
 
-                /**
-                 * Get the value of pdo
-                 */ 
-                public function getPdo()
-                {
-                                return $this->pdo;
-                }
     }
