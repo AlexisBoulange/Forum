@@ -86,6 +86,19 @@ class CategoryController {
             ]
         ];;
     }
+    public function deleteCategory(){
 
+        $id = (isset($_GET['id'])) ? $_GET['id'] : null; // On récupère l'id 
+        $categoryModel = new CategoryManager;
+        
+        $categoryModel->deleteOneById($id);
+
+        return [
+            "view" => "category/deleteCategory.php",
+            "data" => [
+                null,
+            ]
+        ];;
+    }
 
 }
