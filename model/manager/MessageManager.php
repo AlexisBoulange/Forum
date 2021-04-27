@@ -55,14 +55,14 @@ class MessageManager extends AbstractManager
         );
     }
 
-    public function addMessage($message, $userId, $topicId){
+    public function addMessage($message, $user, $topic){
         $sql = "INSERT INTO message(text, user_id, topic_id)
                 VALUES (:text, :user_id, :topic_id)";
 
         return self::create($sql,
                         ["text" =>$message,
-                        "user_id"=>$userId,
-                        "topic_id"=>$topicId]);
+                        "user_id"=>$user,
+                        "topic_id"=>$topic]);
             self::$classname;
         
     }
