@@ -12,10 +12,11 @@
         $nb = $category->getNb();
 ?>
 
-    <article class="lists flex">
+    <article class="lists d-flex p-2 ">
         <a class="topic" href="?ctrl=category&method=listTopicsByCategory&id=<?=$id?>"><?= $name ?></a>
-        <p> <?=$nb;?> </p>
+        <p class="nbTopics align-self-center"> Topics : <?=$nb?> </p>
+        <a class="btn btn-danger align-self-center" href="?ctrl=category&method=deleteCategory&id=<?= $id ?>"> Supprimer</a>
     </article>
     <?php
 }?>
-<a class="btn btn-success" href="?ctrl=category&method=createCategory"> Créer une nouvelle catégorie</a>
+<a class="btn btn-primary " href="?ctrl=category&method=createCategory"> Créer une nouvelle catégorie</a>
