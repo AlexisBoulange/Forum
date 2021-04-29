@@ -25,8 +25,8 @@ class MessageController {
     {
 
         if(\App\Session::getUser()){
-            //On vérifie si tous les champs sont remplis
             $id = (isset($_GET['id'])) ? $_GET['id'] : null; // On récupère l'id 
+            //On vérifie si tous les champs sont remplis
             if (!empty($_POST['text'])) {
 
                 $userId = $_SESSION['user']->getId();
