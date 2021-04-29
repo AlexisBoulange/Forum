@@ -19,4 +19,4 @@ foreach($data['topics'] as $topic){
     <?php
 }?>
 
-<a class="btn btn-primary" href="?ctrl=topic&method=createTopic&id=<?= $topic->getId() ?>"> Créer un nouveau sujet</a>
+<a class="btn btn-primary" href="?ctrl=topic&method=createTopic&id=<?= $category->getId() ?>"> Créer un nouveau sujet</a>
