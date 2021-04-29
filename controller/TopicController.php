@@ -53,50 +53,49 @@ class TopicController
     {
 
         if(\App\Session::getUser()){
+            $id = (isset($_GET['id'])) ? $_GET['id'] : null; // On récupère l'id 
+
+            //on instancie nos classes
+            $topicModel = new TopicManager;
+            $messageModel = new MessageManager;
+            $categoryModel = new CategoryManager;
+
+            //On récupère notre category_id
+            $category = $categoryModel->findOneById($id);
+            $categoryId = $category->getId();
             //On vérifie si tous les champs sont remplis
             if (!empty($_POST['title'])) {
 
+                //on récupère l'id de notre user en session
                 $userId = $_SESSION['user']->getId();
 
                 //on applique un filter input pour se prémunir des failles XCSS
                 $topic = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
-                $categoryId = filter_input(INPUT_POST, "categoryId", FILTER_SANITIZE_STRING);
-                // $userId = filter_input(INPUT_POST, "userId", FILTER_SANITIZE_STRING);
                 $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_STRING);
 
-                $topicModel = new TopicManager;
-                $messageModel = new MessageManager;
-                
-
+                //Si aucun topic existe avec le même nom
                 if (!$topicModel->findOneByName($topic)) {
+                    //On récupère l'id du topic à l'aide du lastInsertId de notre Manager
                     $topicAdd = $topicModel->addTopic($topic, $categoryId, $userId);
+                    //on ajoute la variable de l'id topic
                     $messageModel->addMessage($text, $userId, $topicAdd['id_topic']);
+                    //on récupère notre id topic dans une variable pour pouvoir faire un redirect vers le sujet créé
+                    $idTopic = $topicAdd['id_topic'];
 
-                    header("Location: ?ctrl=topic&method=topicsList");
+                    header("Location: ?ctrl=topic&method=listMessagesByTopic&id=$idTopic");
                 } else {
                     var_dump("Le sujet existe déjà");
                 }
             }
+        } else{
+            var_dump("Vous n'êtes pas connecté");
         }
         return [
             "view" => "topic/createTopic.php",
-            "data" => null
+            "data" => ["category"=>$category,]
         ];
     }
 
-    public function categoriesListForm(){
-
-        $categoryModel = new CategoryManager;
-
-        $categories = $categoryModel->findAll();
-
-        return [
-            "view" => "topic/createTopic.php",
-            "data" => [
-                "categories" => $categories,
-            ]
-        ];;
-    }
 
     public function deleteTopic(){
 
