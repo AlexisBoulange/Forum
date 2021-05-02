@@ -15,6 +15,7 @@ foreach($data['topics'] as $topic){
         <a class="topic" href="?ctrl=topic&method=listMessagesByTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>
         <p class="date"><?= $topic->getCreationDate() ?></p>
         <p class="author">Créé par : <a class="user" href="?ctrl=topic&method=infoUser&id=<?= $topic->getUser()->getId() ?>"><?= $topic->getUser()->getUsername() ?></a></p>
+        <a class="btn btn-success" href="?ctrl=topic&method=editTopic&id=<?= $topic->getId() ?>">Modifier</a>
     </article>
     <?php
 }?>
