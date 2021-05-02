@@ -116,5 +116,15 @@ class TopicManager extends AbstractManager
                 
         }
 
+    public function updateOneById($id, $title){
+        
+        $sql = "UPDATE topic
+                SET title = :title
+                WHERE id_topic = :id";
+
+        return self::update($sql,
+                    ["id" => $id,
+                    "title"=>$title]);
+    }
     
 }
