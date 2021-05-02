@@ -16,7 +16,7 @@
     define('CTRL_PATH', ROOT_DIR.'controller'.DS);  // on définit le chemin vers le dossier controller à l'aide de notre constante "ROOT_DIR" pré-définies tel que  ".\controller\"
     define('SERVICE_PATH', ROOT_DIR.'app'.DS);      // on définit le chemin vers le dossier app à l'aide de notre constante "ROOT_DIR" pré-définies tel que  ".\app\"
 
-
+    
     $result = Router::handleRequest($_GET);
 
     ob_start();
