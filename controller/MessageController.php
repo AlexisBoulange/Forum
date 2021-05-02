@@ -32,8 +32,6 @@ class MessageController {
                 $userId = $_SESSION['user']->getId();
 
                 //on applique un filter input pour se prémunir des failles XCSS
-                // $categoryId = filter_input(INPUT_POST, "categoryId", FILTER_SANITIZE_STRING);
-                // $userId = filter_input(INPUT_POST, "userId", FILTER_SANITIZE_STRING);
                 $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_STRING);
 
                 $messageModel = new MessageManager;
