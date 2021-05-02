@@ -100,6 +100,7 @@ class TopicController
     public function deleteTopic(){
 
         $id = (isset($_GET['id'])) ? $_GET['id'] : null; // On récupère l'id 
+        
         $topicModel = new TopicManager;
         
         $topicModel->deleteOneById($id);
@@ -111,5 +112,39 @@ class TopicController
             ]
         ];;
     }
+    
+    public function editTopic(){
 
+        $id = (isset($_GET['id'])) ? $_GET['id'] : null; // On récupère l'id 
+
+        if(\App\Session::getUser()){
+            //on instancie nos classes
+            $topicModel = new TopicManager;
+            $messageModel = new MessageManager;
+
+            //on applique un filter input pour se prémunir des failles XCSS
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
+            $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_STRING);
+            
+            //on cherche nos éléments à modifier
+            $topic = $topicModel->findOneById($id);
+            $messages = $messageModel->findMessagesByTopic($id);
+
+            if(!empty($_POST['title']) && ($_POST['text'])){
+                //on update nos éléments à modifier
+                $topicModel->updateOneById($id, $title);
+                $messageModel->updateOneById($id, $text);
+
+                //on redirige vers le topic
+                header("Location: ?ctrl=topic&method=listMessagesByTopic&id=$id");
+            }
+        }
+        return [
+            "view" => "topic/editTopic.php",
+            "data" => [
+                'topic'=>$topic,
+                'messages'=>$messages,
+            ]
+        ];;
+    }
 }
