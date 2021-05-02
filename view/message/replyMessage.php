@@ -1,4 +1,3 @@
-<?php?>
 
 
 <form action="?ctrl=message&method=replyMessage&id=<?= $data['id']?>" method="post">
