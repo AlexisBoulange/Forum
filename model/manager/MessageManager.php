@@ -66,4 +66,15 @@ class MessageManager extends AbstractManager
             self::$classname;
         
     }
+
+    public function updateOneById($id, $text){
+        
+        $sql = "UPDATE message
+                SET text = :text
+                WHERE topic_id = :id";
+
+        return self::update($sql,
+                    ["id" => $id,
+                    "text"=>$text]);
+    }
 }
