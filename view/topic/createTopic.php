@@ -1,5 +1,4 @@
-<?php $categoryId = $data['category'];
-var_dump($data['category'])?>
+<?php $categoryId = $data['category'];?>
 
 <h1>Créer un sujet</h1>
 
