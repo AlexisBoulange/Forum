@@ -6,7 +6,7 @@
     ?>
         <article class="lists row align-content-md-center align-items-center">
             <a class="mr-auto p-2 topic " href="?ctrl=topic&method=listMessagesByTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle() ?></a>
-            <a class="btn btn-success" href="#"> Modifier</a>
+            <a class="btn btn-success" href="?ctrl=topic&method=editTopic&id=<?= $topic->getId() ?>">Modifier</a>
             <a class="btn btn-danger" href="?ctrl=topic&method=deleteTopic&id=<?= $topic->getId() ?>"> Supprimer</a>
         </article>
     <?php
