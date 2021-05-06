@@ -16,8 +16,18 @@
     define('CTRL_PATH', ROOT_DIR.'controller'.DS);  // on définit le chemin vers le dossier controller à l'aide de notre constante "ROOT_DIR" pré-définies tel que  ".\controller\"
     define('SERVICE_PATH', ROOT_DIR.'app'.DS);      // on définit le chemin vers le dossier app à l'aide de notre constante "ROOT_DIR" pré-définies tel que  ".\app\"
 
+        // On demande à la Session de génerer une clef propre à elle-même
+        Session::generateKey();
+        // On va génerer un token pour cette requête HTTP seulement
+        $token = hash_hmac("sha256", "phrase_secrete", Session::getKey());
     
+    
+        // On va vérifier que la protection que j'ai mise dans le router renvoie true
+    
+        if(Router::CSRFProtection($token)){
+            // On va autoriser le controlleur à traiter la demande, cad on continue la démarche normale
     $result = Router::handleRequest($_GET);
+}else Router::redirectTo("security", "logout");
 
     ob_start();
 
