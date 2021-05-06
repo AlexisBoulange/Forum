@@ -10,10 +10,7 @@
         <label for="password">Mot de passe</label>
         <input type="password" class="form-control" name="password" id="password" placeholder="">
     </div>
-    <!-- <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Se rappeler de moi</label>
-    </div> -->
+    <p><input type="hidden" value="<?= $token?>" name="token"></p>
     <button type="submit" class="btn btn-primary">Se connecter</button>
     
 </form>
