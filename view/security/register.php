@@ -17,9 +17,6 @@
         <label for="verifPassword">Confirmez le mot de passe</label>
         <input type="password" class="form-control" name="verifPassword" id="verifPassword" placeholder="">
     </div>
-    <!-- <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-        <label class="form-check-label" for="exampleCheck1">J'ai lu et j'accepte les <a href="#">règles du forum</a></label>
-    </div> -->
+    <p><input type="hidden" value="<?= $token?>" name="token"></p>
     <button type="submit" class="btn btn-primary">S'inscrire'</button>
 </form>
